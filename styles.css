@@ -1,0 +1,195 @@
+:root{
+  --bg:#0f1218;
+  --card:#171b23;
+  --muted:#94a3b8;
+  --text:#e5e7eb;
+  --blue:#3b82f6;
+  --red:#ef4444;
+  --pink:#ec4899;
+  --green:#22c55e;
+  --yellow:#f59e0b;
+}
+
+/* —— Reset / Base —— */
+*{box-sizing:border-box}
+html,body{margin:0;background:linear-gradient(180deg,#0d1117 0%, #111827 100%);color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif}
+
+/* —— Topbar —— */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;
+  background:linear-gradient(90deg,var(--blue),var(--pink));}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.topbar h1{margin:0;font-size:20px;font-weight:800}
+.topbar .day-box{display:flex;align-items:center;gap:10px;font-weight:700}
+.howto-btn{border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.12);
+  border-radius:999px;padding:6px 10px;color:#fff;font-weight:800;cursor:pointer}
+.howto-btn:hover{background:rgba(0,0,0,.18)}
+
+/* —— Layout —— */
+.container{max-width:1200px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.left-column,.right-column{display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid #222a37;border-radius:14px;padding:14px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.25)}
+.footer{max-width:1200px;margin:10px auto 40px;padding:0 16px;color:#9ca3af}
+
+/* —— Stats / Actions / Log —— */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stats .timer{grid-column:1/-1;margin-top:6px;color:var(--muted)}
+.stat{color:#cbd5e1}
+.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.actions button{padding:12px;border-radius:12px;border:1px solid #243041;
+  background:linear-gradient(180deg,#1c2432 0%, #121823 100%);color:#e6ebf5;font-weight:700;cursor:pointer;transition:.15s}
+.actions button:hover{transform:translateY(-1px);border-color:#2f3f57}
+.actions .danger{background:linear-gradient(180deg,#30161c 0%,#1a0f13 100%);border-color:#3d1f28;color:#ffd6dc}
+.actions .danger:hover{border-color:#6b1f2a}
+#log{max-height:220px;overflow:auto;border:1px dashed #283246;border-radius:10px;padding:10px;background:#0c1220}
+#log .entry{font-size:14px;color:#d1d5db;margin-bottom:6px;border-left:3px solid var(--blue);padding-left:8px}
+#log .entry.warn{border-left-color:var(--yellow)}
+#log .entry.good{border-left-color:var(--green)}
+#log .entry.bad{border-left-color:var(--red)}
+
+/* —— Farm Area (pixel vibe) —— */
+.farm{padding:10px}
+.farm-area{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:12px;
+  overflow:hidden;
+  image-rendering: pixelated;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.06) 50%, transparent 50%) 0 0/8px 8px,
+    linear-gradient(0deg,  rgba(0,0,0,0.06) 50%, transparent 50%) 0 0/8px 8px,
+    linear-gradient(0deg, #0e1d12, #132a19);
+  border:2px solid #27422f;
+  box-shadow: inset 0 0 0 3px rgba(0,0,0,.25);
+}
+
+/* —— Fence (SVG data URI) —— */
+.fence{
+  position:absolute;
+  background-repeat:repeat;
+  background-size:32px 16px;
+  --fence:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='32' height='16'>\
+<rect width='32' height='16' fill='%23a26a2a'/>\
+<rect x='0' y='6' width='32' height='4' fill='%23c7893a'/>\
+<rect x='8' y='0' width='4' height='16' fill='%238b591f'/>\
+<rect x='20' y='0' width='4' height='16' fill='%238b591f'/>\
+</svg>");
+  background-image:var(--fence);
+  opacity:.95;
+}
+.fence-top{left:0;right:0;top:0;height:16px}
+.fence-bottom{left:0;right:0;bottom:0;height:16px}
+.fence-left{top:0;bottom:0;left:0;width:16px;background-size:16px 32px}
+.fence-right{top:0;bottom:0;right:0;width:16px;background-size:16px 32px}
+
+/* —— Barn (SVG data URI) —— */
+.barn{
+  position:absolute; left:16px; bottom:16px; width:96px; height:96px;
+  background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' shape-rendering='crispEdges'>\
+<rect width='96' height='96' fill='%23b91c1c'/>\
+<rect x='0' y='64' width='96' height='32' fill='%238c1515'/>\
+<rect x='18' y='18' width='60' height='28' fill='%23ffd7d7'/>\
+<rect x='34' y='44' width='28' height='36' fill='%23231f20'/>\
+<rect x='42' y='54' width='12' height='16' fill='%23464749'/>\
+<rect x='0' y='0' width='96' height='8' fill='%23fca5a5'/>\
+</svg>");
+  image-rendering: pixelated;
+  filter: drop-shadow(0 3px 0 rgba(0,0,0,.25));
+}
+
+/* —— Cow Sprite (3-frame via classes) —— */
+.cow-sprite{
+  position:absolute; width:32px; height:32px; transform:translate(-50%,-50%); cursor:pointer;
+  image-rendering: pixelated;
+  transition: transform .08s;
+}
+.cow-sprite:active{ transform:translate(-50%,-50%) scale(0.95) }
+.cow-sprite.selected{ outline:2px solid var(--pink); border-radius:4px; }
+
+/* frame variants (swap by JS) */
+.cow-f0{ background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'>\
+<rect width='32' height='32' fill='none'/>\
+<rect x='6' y='10' width='20' height='12' fill='%23ffffff'/>\
+<rect x='10' y='12' width='4' height='4' fill='%23231f20'/>\
+<rect x='18' y='14' width='3' height='3' fill='%23231f20'/>\
+<rect x='2' y='12' width='8' height='8' fill='%23ffffff'/>\
+<rect x='2' y='10' width='2' height='2' fill='%23231f20'/>\
+<rect x='2' y='16' width='4' height='3' fill='%23fca5a5'/>\
+<rect x='5' y='14' width='1' height='1' fill='%23000000'/>\
+<rect x='10' y='22' width='2' height='4' fill='%23231f20'/>\
+<rect x='16' y='22' width='2' height='4' fill='%23231f20'/>\
+<rect x='22' y='22' width='2' height='4' fill='%23231f20'/>\
+<rect x='26' y='12' width='1' height='6' fill='%23231f20'/>\
+</svg>"); background-size:32px 32px; }
+.cow-f1{ background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'>\
+<rect width='32' height='32' fill='none'/>\
+<rect x='6' y='10' width='20' height='12' fill='%23ffffff'/>\
+<rect x='12' y='12' width='3' height='4' fill='%23231f20'/>\
+<rect x='19' y='13' width='3' height='3' fill='%23231f20'/>\
+<rect x='2' y='12' width='8' height='8' fill='%23ffffff'/>\
+<rect x='2' y='10' width='2' height='2' fill'%23231f20'/>\
+<rect x='2' y='16' width='4' height='3' fill='%23fca5a5'/>\
+<rect x='5' y='14' width='1' height='1' fill='%23000000'/>\
+<rect x='10' y='22' width='2' height='4' fill'%23231f20'/>\
+<rect x='16' y='22' width='2' height='4' fill'%23231f20'/>\
+<rect x='22' y='21' width='2' height='5' fill='%23231f20'/>\
+<rect x='26' y='12' width='1' height='6' fill='%23231f20'/>\
+</svg>"); background-size:32px 32px; }
+.cow-f2{ background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' shape-rendering='crispEdges'>\
+<rect width='32' height='32' fill='none'/>\
+<rect x='6' y='10' width='20' height='12' fill='%23ffffff'/>\
+<rect x='9' y='13' width='4' height='3' fill='%23231f20'/>\
+<rect x='19' y='15' width='3' height='3' fill='%23231f20'/>\
+<rect x='2' y='12' width='8' height='8' fill='%23ffffff'/>\
+<rect x='3' y='10' width='2' height='2' fill='%23231f20'/>\
+<rect x='2' y='16' width='4' height='3' fill='%23fca5a5'/>\
+<rect x='5' y='14' width='1' height='1' fill='%23000000'/>\
+<rect x='10' y='23' width='2' height='3' fill='%23231f20'/>\
+<rect x='16' y='21' width='2' height='5' fill='%23231f20'/>\
+<rect x='22' y='22' width='2' height='4' fill='%23231f20'/>\
+<rect x='26' y='12' width='1' height='6' fill='%23231f20'/>\
+</svg>"); background-size:32px 32px; }
+
+.cow-sprite{ background-repeat:no-repeat }
+
+/* —— Selected Box —— */
+.selected-box.empty{opacity:.7;font-style:italic}
+.selected-box .row{display:flex;justify-content:space-between;margin:6px 0}
+.bar{height:8px;background:#1f2937;border-radius:999px;overflow:hidden;margin:4px 0}
+.fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--red))}
+
+/* —— Event banner —— */
+.event-banner{
+  position:absolute; left:50%; top:8px; transform:translateX(-50%);
+  background:linear-gradient(90deg,var(--pink),var(--blue));
+  padding:6px 10px; border-radius:999px; font-weight:800; font-size:12px;
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
+
+/* —— Modal —— */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;z-index:50}
+.modal{width:min(560px,96vw);background:#0f172a;border:1px solid #243041;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #243041}
+.modal-body{padding:12px 14px;color:#d1d5db}
+.modal-body ol{padding-left:18px}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;padding:12px 14px;border-top:1px solid #243041}
+.close-btn,.primary-btn{padding:8px 12px;border-radius:10px;border:1px solid #2b3a50;cursor:pointer;color:#e6ebf5;background:linear-gradient(180deg,#1c2432 0%, #121823 100%)}
+.primary-btn{border-color:#31518a}
+
+/* —— Responsive —— */
+@media (max-width:980px){
+  .container{grid-template-columns:1fr}
+  .actions{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  .logo{width:28px;height:28px}
+}
