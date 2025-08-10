@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lamumu: Cow Farm</title>
+  <meta name="description" content="Pixel farm mini-game: raise cows, milk, sell, and upgrade your barn." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">
+      <img
+        class="logo"
+        src="https://raw.githubusercontent.com/choir94/Lamumumeme/main/1000182508-removebg-preview.png"
+        alt="Lamumu Logo"
+        width="32" height="32"
+      />
+      Lamumu: Cow Farm 🐄
+    </h1>
+    <div class="day-box">
+      <button id="howToBtn" class="howto-btn">How to Play</button>
+      <span id="day">Day 1</span> ·
+      <span id="festival" title="Event status">No Event</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="left-column">
+      <section class="stats card">
+        <div class="stat"><strong>Coins:</strong> <span id="coins">0</span></div>
+        <div class="stat"><strong>Feed:</strong> <span id="feed">0</span></div>
+        <div class="stat"><strong>Milk:</strong> <span id="milk">0</span></div>
+        <div class="stat"><strong>Barn:</strong> <span id="barn">Lv.1</span> (Cap: <span id="capacity">3</span>)</div>
+        <div class="stat"><strong>Cows:</strong> <span id="cowCount">0</span></div>
+        <div class="stat"><strong>Price/Sell:</strong> <span id="milkPrice">5</span> / milk</div>
+        <div class="timer"><strong>Time:</strong> <span id="clock">00:59</span></div>
+      </section>
+
+      <section class="actions card">
+        <button id="buyCow">Buy Cow (💰 100)</button>
+        <button id="buyFeed">Buy Feed x10 (💰 20)</button>
+        <button id="feedAll">Feed All (-1 feed/cow)</button>
+        <button id="waterAll">Water All</button>
+        <button id="milkAll">Milk All</button>
+        <button id="sellMilk">Sell Milk</button>
+        <button id="upgradeBarn">Upgrade Barn (💰 250)</button>
+        <button id="reset" class="danger">Reset Save</button>
+      </section>
+
+      <section class="log card">
+        <h2>Activity Log</h2>
+        <div id="log"></div>
+      </section>
+    </section>
+
+    <section class="right-column">
+      <section class="farm card">
+        <div id="eventBanner" class="event-banner" hidden>Lamumu Festival! Milk price x1.5</div>
+        <div id="farm" class="farm-area" aria-label="Farm field">
+          <!-- Decorative fence -->
+          <div class="fence fence-top"></div>
+          <div class="fence fence-bottom"></div>
+          <div class="fence fence-left"></div>
+          <div class="fence fence-right"></div>
+          <!-- Barn -->
+          <div class="barn"></div>
+          <!-- Cows injected by JS -->
+        </div>
+      </section>
+
+      <section class="selected card">
+        <h2>Selected Cow</h2>
+        <div id="selectedBox" class="selected-box empty">Tap a cow on the field to view details.</div>
+      </section>
+    </section>
+  </main>
+
+  <!-- How to Play Modal -->
+  <div id="howtoOverlay" class="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <h3>How to Play</h3>
+        <button id="closeHowTo" class="close-btn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <li><strong>Buy Cow</strong> to start your ranch.</li>
+          <li><strong>Feed</strong> and <strong>Water</strong> daily to raise <em>Hunger</em> and <em>Happiness</em>.</li>
+          <li>Cows produce milk when <em>Milk Progress</em> reaches 100% — then press <strong>Milk All</strong>.</li>
+          <li><strong>Sell Milk</strong> to earn coins. During <strong>Lamumu Festival</strong>, milk sells for x1.5.</li>
+          <li><strong>Upgrade Barn</strong> to increase cow capacity.</li>
+          <li>Tap a cow on the field to view stats. Cows wander slowly; keep them happy!</li>
+        </ol>
+        <p><small>Note: 60 seconds = 1 in-game day. Your progress is saved in your browser.</small></p>
+      </div>
+      <div class="modal-footer">
+        <button id="gotIt" class="primary-btn">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>Made for Lamumu contributors • Pixel-art CSS/SVG • Local save • No external assets</small>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
